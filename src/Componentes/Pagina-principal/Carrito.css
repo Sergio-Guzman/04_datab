@@ -1,0 +1,62 @@
+.car-overlay.open {
+    background: white;
+    width: 300px;
+    height: 360px;
+    display: flex;
+    justify-content: baseline;
+    align-items: center;
+    flex-direction: column;
+    margin-left: auto;
+    position: fixed; 
+    top: 98px; 
+    right: 0; 
+    z-index: 3;
+    border: 3px solid black;
+  }
+  
+  .car-close {
+    margin-top: 20px;
+    margin-left: 220px;
+  }
+  
+  .car-empty img {
+    width: 260px;
+    height: 260px;
+  }
+
+  .car-empty p {
+    display: flex;
+    justify-content: center;
+  }
+
+  .car-product {
+    display: flex;
+    flex-direction: row;
+    width: 300px;
+    height: 120px;
+    justify-content: space-around;
+    align-items: center;
+    border: 2px solid red;
+  }
+
+  .car-product img {
+    width: 80px;
+    height: 100px;
+  }
+
+  .car-product h2 {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    width: 100px;
+    height: 60px;
+  }
+
+  .car-product h3 {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    width: 40px;
+    height: 60px;
+  }
+  
