@@ -15,6 +15,13 @@ export const Header = () => {
 }
 
 function Menu() {
+
+  const [search, setSearch] = useState('');
+
+  const handleSearch = (e) => {
+    setSearch(e.target.value);
+  };
+
   // CARRITO
   const [isOpenCarrito, setIsOpenCarrito] = useState(false);
 
@@ -99,7 +106,8 @@ function Menu() {
         <div className="right-align-elements">
           <div className="search-bar">
             <img src={require('./img-header/search.png')} alt='buscador' />
-            <input type="text" placeholder="Search..." className="searchInput" />
+            <input type='text' placeholder='Search...' className='searchInput' value={search} onChange={handleSearch} />
+
           </div>
           {/* REGISTRO */}
           <div>

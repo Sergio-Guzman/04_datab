@@ -25,7 +25,6 @@ function Carrito({ isOpen, onClose, products }) {
                 <img src={empty} alt="img-empty" />
                 <p className='empty'>No hay productos en el carrito</p>
               </div>
-
             </>
           )}
         </>

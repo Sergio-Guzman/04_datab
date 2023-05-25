@@ -1,23 +1,16 @@
 import '../Pages/AllProducts.css';
-import axios from 'axios';
 import Footer from '../Componentes/Pagina-principal/Footer'
-import { useEffect, useState } from 'react';
+import { ProductContext } from '../Context/ProductContext';
+
+import { useContext } from 'react';
 
 export const AllProducts = () => {
-  const [stuff, setStuff] = useState([]);
-
-  useEffect(() => {
-    axios.get('https://fakestoreapi.com/products')
-      .then(res => {
-        setStuff(res.data);
-      })
-      .catch(error => console.log(error));
-  }, []);
+  const {AllProducts} = useContext(ProductContext)
 
   return (
     <div>
     <div className='content'>
-      {stuff.map(per => (
+      {AllProducts.map(per => (
         <div className='card el-wrapper' key={per.id}>
           <div className='box-up'>
             <img className='img' src={per.image} alt={per.title} />
