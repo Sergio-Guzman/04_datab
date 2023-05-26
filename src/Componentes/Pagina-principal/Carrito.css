@@ -37,22 +37,32 @@
     justify-content: center;
   }
 
+  .car-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    height: 60vh;
+    overflow-y: auto;
+    margin-top: 40px;
+    margin-bottom: 40px;
+  }
+  
   .car-product {
     display: flex;
     flex-direction: row;
-    width: 300px;
-    height: 120px;
+    width: 500px;
+    height: 140px;
     justify-content: space-around;
     align-items: center;
-    
-    border: 2px solid red;
+    margin-top: 6px;
   }
-
+  
   .car-product img {
     width: 80px;
     height: 100px;
   }
-
+  
   .car-product h2 {
     display: flex;
     align-items: center;
@@ -60,12 +70,23 @@
     width: 100px;
     height: 60px;
   }
-
+  
   .car-product h3 {
     display: flex;
     align-items: center;
     font-size: 14px;
     width: 40px;
     height: 60px;
+  }
+  
+  .car-close-product {
+    border: none;
+    cursor: pointer;
+  }
+  .carritoTotal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
   }
   

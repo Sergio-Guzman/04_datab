@@ -1,4 +1,5 @@
 import '../Pages/AllProducts.css';
+import { Link } from 'react-router-dom';
 import Footer from '../Componentes/Pagina-principal/Footer';
 import { ProductContext } from '../Context/ProductContext';
 import { useContext } from 'react';
@@ -17,9 +18,13 @@ export const AllProducts = () => {
         {AllProducts.map((per) => (
           <div className='card el-wrapper' key={per.id}>
             <div className='box-up'>
-              <img className='img' src={per.image} alt={per.title} />
+              <Link to={`/Descripcion/${per.id}`}>
+                <img className='img' src={per.image} alt={per.title} />
+              </Link>
               <div className='info-inner'>
-                <span className='p-name'>{per.title}</span>
+                <Link to={`/Descripcion/${per.id}`}>
+                  <span className='p-name'>{per.title}</span>
+                </Link>
               </div>
             </div>
             <div className='card-body box-down'>
@@ -40,3 +45,5 @@ export const AllProducts = () => {
     </div>
   );
 };
+
+

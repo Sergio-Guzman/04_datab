@@ -9,9 +9,9 @@ export const AppRouter = () => {
         <Routes>
             <Route path='/' element={<Header/>}>
             <Route index element={<HomePage/>}/>
-            <Route path='Descripcion' element={<Descripcion/>}/>
+            <Route path='Descripcion/:id' element={<Descripcion />} />
             <Route path='Busqueda' element={<SearchPage/>}/>
-            <Route path='/Carrito' element={<Carrito />}/>
+            <Route path='Carrito' element={<Carrito />}/>
             <Route path='AllProducts' element={<AllProducts/>}/>
             </Route>
         <Route path='*' element={<Navigate to='/'/>}/>
