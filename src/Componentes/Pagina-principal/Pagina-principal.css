@@ -94,7 +94,13 @@
   border: none;
   cursor: pointer;
 }
-.carrito{  
+
+.car {
+  position: relative;
+
+}
+
+.carrito { 
   appearance: none;
   outline: none;
   border: none;

@@ -4,7 +4,7 @@ body {
 }
 
 .container {
-  margin-top: 80px;
+  margin-top: 70px;
   display: grid;
   grid-template-columns: 1fr 1fr;
   justify-content: center;
@@ -30,9 +30,14 @@ body {
 .detalle {
   padding-top: 100px;
   align-items: center;
-  width: 460px;
+  width: 400px;
   height: 350px;
 }
+
+.detalle p {
+  text-align: justify;
+}
+
 
 .detalle h2{
   text-transform: uppercase;
@@ -61,6 +66,7 @@ body {
   justify-content: center;
   text-align: center ;
   padding-top: 18px;
+  margin-bottom: 18px;
   font-weight: bolder;
   cursor: pointer;
 }
@@ -68,4 +74,10 @@ body {
 .detalle button:hover {
   color: white;
   background-color: #464646;
+}
+
+.volver {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

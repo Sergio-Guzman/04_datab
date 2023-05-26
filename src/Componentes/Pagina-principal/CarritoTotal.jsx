@@ -5,9 +5,10 @@ const CarritoTotal = () => {
     const { cart } = useContext(ProductContext);
 
     const total = cart.reduce((acc,el)=> acc + el.price, 0);
+    const totalTruncado = Number.parseFloat(total).toFixed(2);
   return (
     <div className='carritoTotal'>
-        <h3>Total a pagar: €{total} </h3>
+        <h3>Total a pagar: €{totalTruncado} </h3>
     </div>
   )
 }

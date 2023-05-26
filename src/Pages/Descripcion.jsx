@@ -1,18 +1,24 @@
 import React, { useState, useEffect, useContext } from 'react';
 import '../Pages/Descripcion.css';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import { ProductContext } from '../Context/ProductContext';
 
 export const Descripcion = () => {
   const [product, setProduct] = useState(null);
   const { id } = useParams();
-  
-  const { AllProducts } = useContext(ProductContext); 
+
+  const { AllProducts, cart, setCart } = useContext(ProductContext); 
 
   useEffect(() => {
     const selectedProduct = AllProducts.find((item) => item.id === parseInt(id));
     setProduct(selectedProduct);
   }, [AllProducts, id]);
+
+  const addToCart = () => {
+    if (product) {
+      setCart([...cart, product]); 
+    }
+  };
 
   return (
     <div>
@@ -25,7 +31,8 @@ export const Descripcion = () => {
             <h2>{product.title}</h2>
             <h3>€{product.price}</h3>
             <p>{product.description}</p>
-            <button>AGREGAR AL CARRITO</button>
+            <button onClick={addToCart}>AGREGAR AL CARRITO</button>
+            <Link className='volver' to="/AllProducts">Volver</Link>
           </div>
         </div>
       )}
@@ -34,6 +41,7 @@ export const Descripcion = () => {
 };
 
 export default Descripcion;
+
 
 
 

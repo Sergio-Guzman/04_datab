@@ -30,7 +30,7 @@ export const AllProducts = () => {
             <div className='card-body box-down'>
               <div className='h-bg'>
                 <div className='h-bg-inner'></div>
-                <a className='cart' href='#' onClick={() => buyProducts(per)}>
+                <a className='cart' href='#' onClick={(e) => { e.preventDefault(); buyProducts(per); }}>
                   <span className='price'>{per.price}€</span>
                   <span className='add-to-cart'>
                     <span className='txt'>Agregar al carrito</span>
