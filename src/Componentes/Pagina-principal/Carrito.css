@@ -19,9 +19,17 @@
     margin-left: 220px;
   }
   
+  .car-empty {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 60px;
+  }
+
   .car-empty img {
-    width: 260px;
-    height: 260px;
+    width: 360px;
+    height: 360px;
   }
 
   .car-empty p {
@@ -36,6 +44,7 @@
     height: 120px;
     justify-content: space-around;
     align-items: center;
+    
     border: 2px solid red;
   }
 

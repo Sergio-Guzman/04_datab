@@ -1,9 +1,10 @@
 import React from 'react'
-import { Outlet } from 'react-router-dom'
-import './Pagina-principal.css';
+import { Outlet, Link } from 'react-router-dom'
 import { useState } from 'react';
-import Carrito from './Carrito'
-
+import { ProductContext } from '../../Context/ProductContext';
+import { useContext } from 'react';
+import CarritoContador from './CarritoContador';
+import './Pagina-principal.css';
 
 export const Header = () => {
   return (
@@ -15,24 +16,13 @@ export const Header = () => {
 }
 
 function Menu() {
+  const { cart } = useContext(ProductContext);
 
   const [search, setSearch] = useState('');
 
   const handleSearch = (e) => {
     setSearch(e.target.value);
   };
-
-  // CARRITO
-  const [isOpenCarrito, setIsOpenCarrito] = useState(false);
-
-  const handleOpenCarrito = () => {
-    setIsOpenCarrito(true);
-  };
-
-  const handleCloseCarrito = () => {
-    setIsOpenCarrito(false);
-  };
-  // CARRITO
 
   // HAMBURGUESA
   const [menuVisible, setMenuVisible] = useState(false);
@@ -136,8 +126,10 @@ function Menu() {
           </div>
           {/* CARRITO */}
           <div className="car">
-            <button className="carrito" onClick={handleOpenCarrito}><img src={require('./img-header/carrito.png')} alt='carrito' /></button>
-            <Carrito isOpen={isOpenCarrito} onClose={handleCloseCarrito} />
+            <Link className="carrito" to={"/Carrito"}><img src={require('./img-header/carrito.png')} alt='carrito' />
+            {cart.length > 0 ?<CarritoContador /> : null}
+            </Link>
+           
           </div>
           {/* CARRITO */}
         </div>
