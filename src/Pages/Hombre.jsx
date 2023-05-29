@@ -14,7 +14,7 @@ export const Hombre = () => {
   };
 
   const filteredProducts = AllProducts.filter((product) => {
-    return product.category.toLowerCase().includes(searchTerm.toLowerCase());
+    return product.category.toLowerCase()===(searchTerm.toLowerCase());
   });
 
   const onSearchSubmit = (e) => {
