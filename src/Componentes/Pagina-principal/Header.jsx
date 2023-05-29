@@ -78,18 +78,23 @@ function Menu() {
               <div className='hamburguesa-content'>
                 <ul>
                   <li>
-                    <Link to="Mujer/:womens_clothing" className="enlace-hamburguesa">
+                    <Link to="Mujer" className="enlace-hamburguesa">
                       Mujer
                     </Link>
                   </li>
                   <li>
-                    <Link to="Hombre/:men_clothing" className="enlace-hamburguesa">
+                    <Link to="Hombre" className="enlace-hamburguesa">
                       Hombre
                     </Link>
                   </li>
                   <li>
-                    <Link to="Accesorios/:category(jewelery|electronics)" className="enlace-hamburguesa">
+                    <Link to="Accesorios" className="enlace-hamburguesa">
                       Accesorios
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="AllProducts" className="enlace-hamburguesa">
+                     Todos los productos
                     </Link>
                   </li>
                 </ul>

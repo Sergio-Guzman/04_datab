@@ -18,7 +18,7 @@ export const AppRouter = () => {
         <Route path="AllProducts" element={<AllProducts />} />
         <Route path="Mujer" element={<Mujer />} />
         <Route path="Hombre" element={<Hombre />} />
-        <Route path="Accesorios/:category(jewelery|electronics)" element={<Accesorios />}
+        <Route path="Accesorios" element={<Accesorios />}
         />
         <Route path="*" element={<Navigate to="/" />} />
       </Route>
