@@ -1,7 +1,8 @@
 import React from 'react'
+import { Buscador } from '../Componentes/Pagina-principal/Buscador'
 
 export const SearchPage = () => {
   return (
-    <div>SearchPage</div>
+    <div><Buscador/></div>
   )
 }

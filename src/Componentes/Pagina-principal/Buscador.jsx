@@ -1,59 +1,83 @@
-import React, { useState, useEffect } from 'react';
+import React, { useContext, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import Footer from '../Pagina-principal/Footer';
+import { ProductContext } from '../../Context/ProductContext';
 
-const Buscador = () => {
-  const [users, setUsers] = useState([]);
-  const [search, setSearch] = useState('');
+export const Buscador = () => {
+  const { AllProducts, cart, setCart } = useContext(ProductContext);
+  const [searchTerm, setSearchTerm] = useState('');
+  const navigate = useNavigate();
 
-  const URL = 'https://fakestoreapi.com/products';
-
-  const showData = async () => {
-    try {
-      const response = await fetch(URL);
-      const data = await response.json();
-      setUsers(data);
-    } catch (error) {
-      console.log(error);
-    }
+  const buyProducts = (product) => {
+    console.log(product);
+    setCart([...cart, product]);
   };
 
   const handleSearch = (e) => {
-    setSearch(e.target.value);
+    setSearchTerm(e.target.value);
   };
 
-  const filteredUsers = users.filter((user) =>
-    user.name.toLowerCase().includes(search.toLowerCase())
-  );
+  const filteredProducts = AllProducts.filter((product) => {
+    return product.title.toLowerCase().includes(searchTerm.toLowerCase());
+  });
 
-  useEffect(() => {
-    showData();
-  }, []);
+  const onSearchSubmit = (e) => {
+    e.preventDefault();
+    if (searchTerm.trim() !== '') {
+      navigate('/Busqueda', {
+        state: searchTerm,
+      });
+    }
+  };
 
   return (
-    <div className='content'>
-      <input type='text' value={search} onChange={handleSearch} />
-      {filteredUsers.map((user) => (
-        <div className='card el-wrapper' key={user.id}>
-          <div className='box-up'>
-            <img className='img' src={user.image} alt={user.title} />
-            <div className='info-inner'>
-              <span className='p-name'>{user.title}</span>
-            </div>
-          </div>
-          <div className='card-body box-down'>
-            <div className='h-bg'>
-              <div className='h-bg-inner'></div>
-              <a className='cart' href='.'>
-                <span className='price'>{user.price}€</span>
-                <span className='add-to-cart'>
-                  <span className='txt'>Agregar al carrito</span>
-                </span>
-              </a>
-            </div>
-          </div>
+    <div>
+      <form onSubmit={onSearchSubmit}>
+        <div className='search-bar'>
+          <input
+            type='text'
+            placeholder='Search...'
+            value={searchTerm}
+            onChange={handleSearch}
+          />
+          <button type='submit'>Search</button>
         </div>
-      ))}
+      </form>
+      <div className='content'>
+        {filteredProducts.map((product) => (
+          <div className='card el-wrapper' key={product.id}>
+            <div className='box-up'>
+              <Link to={`/Descripcion/${product.id}`}>
+                <img className='img' src={product.image} alt={product.title} />
+              </Link>
+              <div className='info-inner'>
+                <Link to={`/Descripcion/${product.id}`}>
+                  <span className='p-name'>{product.title}</span>
+                </Link>
+              </div>
+            </div>
+            <div className='card-body box-down'>
+              <div className='h-bg'>
+                <div className='h-bg-inner'></div>
+                <a
+                  className='cart'
+                  href='*'
+                  onClick={(e) => {
+                    e.preventDefault();
+                    buyProducts(product);
+                  }}
+                >
+                  <span className='price'>{product.price}€</span>
+                  <span className='add-to-cart'>
+                    <span className='txt'>Agregar al carrito</span>
+                  </span>
+                </a>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+      <Footer />
     </div>
   );
 };
-
-export default Buscador;

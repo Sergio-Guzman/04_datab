@@ -1,17 +1,36 @@
-import React, { useContext } from 'react';
-import { ProductContext } from '../Context/ProductContext';
+import React, { useContext, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import Footer from '../Componentes/Pagina-principal/Footer';
-import Banner from '../Componentes/Pagina-principal/Banner';
-import { Link } from 'react-router-dom';
+import { ProductContext } from '../Context/ProductContext';
 
 export const Hombre = () => {
-  const { AllProducts, } = useContext(ProductContext);
+  const { AllProducts, cart, setCart } = useContext(ProductContext);
+  const [searchTerm, setSearchTerm] = useState('Mens'); // Establecer el valor inicial como "Men"
+  const navigate = useNavigate();
+
+  const buyProducts = (product) => {
+    console.log(product);
+    setCart([...cart, product]);
+  };
+
+  const filteredProducts = AllProducts.filter((product) => {
+    return product.title.toLowerCase().includes(searchTerm.toLowerCase());
+  });
+
+  const onSearchSubmit = (e) => {
+    e.preventDefault();
+    if (searchTerm.trim() !== '') {
+      navigate('/Hombre', {
+        state: searchTerm,
+      });
+    }
+  };
 
   return (
-    <div>Hombre
-      <Banner />
+    <div>
+      HOMBRE
       <div className='content'>
-        {AllProducts.map((product) => (
+        {filteredProducts.map((product) => (
           <div className='card el-wrapper' key={product.id}>
             <div className='box-up'>
               <Link to={`/Descripcion/${product.id}`}>
@@ -26,10 +45,19 @@ export const Hombre = () => {
             <div className='card-body box-down'>
               <div className='h-bg'>
                 <div className='h-bg-inner'></div>
-                <span className='price'>{product.price}€</span>
-                <span className='add-to-cart'>
-                  <span className='txt'>Agregar al carrito</span>
-                </span>
+                <a
+                  className='cart'
+                  href='*'
+                  onClick={(e) => {
+                    e.preventDefault();
+                    buyProducts(product);
+                  }}
+                >
+                  <span className='price'>{product.price}€</span>
+                  <span className='add-to-cart'>
+                    <span className='txt'>Agregar al carrito</span>
+                  </span>
+                </a>
               </div>
             </div>
           </div>

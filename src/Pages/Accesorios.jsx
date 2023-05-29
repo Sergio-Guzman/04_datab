@@ -1,6 +1,5 @@
 import React, { useContext } from 'react';
 import Footer from '../Componentes/Pagina-principal/Footer';
-import Banner from '../Componentes/Pagina-principal/Banner';
 import { ProductContext } from '../Context/ProductContext';
 import { Link } from 'react-router-dom';
 
@@ -15,7 +14,6 @@ export const Accesorios = () => {
   return (
     <div>
       Accesorios
-      <Banner />
       <div className='content'>
         {AllProducts.map((product) => (
           <div className='card el-wrapper' key={product.id}>

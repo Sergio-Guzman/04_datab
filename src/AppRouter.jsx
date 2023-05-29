@@ -16,8 +16,8 @@ export const AppRouter = () => {
         <Route path="Busqueda" element={<SearchPage />} />
         <Route path="Carrito" element={<Carrito />} />
         <Route path="AllProducts" element={<AllProducts />} />
-        <Route path="Mujer/:category(womens_clothing)" element={<Mujer />} />
-        <Route path="Hombre/:category(mens_clothing)" element={<Hombre />} />
+        <Route path="Mujer" element={<Mujer />} />
+        <Route path="Hombre" element={<Hombre />} />
         <Route path="Accesorios/:category(jewelery|electronics)" element={<Accesorios />}
         />
         <Route path="*" element={<Navigate to="/" />} />
