@@ -5,7 +5,7 @@ import { ProductContext } from '../Context/ProductContext';
 
 export const Hombre = () => {
   const { AllProducts, cart, setCart } = useContext(ProductContext);
-  const [searchTerm, setSearchTerm] = useState('Mens'); // Establecer el valor inicial como "Men"
+  const [searchTerm, setSearchTerm] = useState("men's clothing"); // Establecer el valor inicial como "Men"
   const navigate = useNavigate();
 
   const buyProducts = (product) => {
@@ -14,7 +14,7 @@ export const Hombre = () => {
   };
 
   const filteredProducts = AllProducts.filter((product) => {
-    return product.title.toLowerCase().includes(searchTerm.toLowerCase());
+    return product.category.toLowerCase().includes(searchTerm.toLowerCase());
   });
 
   const onSearchSubmit = (e) => {

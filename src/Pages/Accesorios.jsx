@@ -1,21 +1,39 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import Footer from '../Componentes/Pagina-principal/Footer';
 import { ProductContext } from '../Context/ProductContext';
-import { Link } from 'react-router-dom';
 
 export const Accesorios = () => {
-  const { AllProducts, cart, setCartItem } = useContext(ProductContext);
+  const { AllProducts, cart, setCart } = useContext(ProductContext);
+  const [searchTerm, setSearchTerm] = useState({ category: 'jewelery', secondCategory: 'electronics' });
+  const navigate = useNavigate();
 
-  const addToCart = (product) => {
+  const buyProducts = (product) => {
     console.log(product);
-    setCartItem([...cart, product]);
+    setCart([...cart, product]);
+  };
+
+  const filteredProducts = AllProducts.filter((product) => {
+    return (
+      product.category.toLowerCase().includes(searchTerm.category.toLowerCase()) ||
+      product.category.toLowerCase().includes(searchTerm.secondCategory.toLowerCase())
+    );
+  });
+
+  const onSearchSubmit = (e) => {
+    e.preventDefault();
+    if (searchTerm.category.trim() !== '') {
+      navigate('/Mujer', {
+        state: searchTerm.category,
+      });
+    }
   };
 
   return (
     <div>
-      Accesorios
+      MUJER
       <div className='content'>
-        {AllProducts.map((product) => (
+        {filteredProducts.map((product) => (
           <div className='card el-wrapper' key={product.id}>
             <div className='box-up'>
               <Link to={`/Descripcion/${product.id}`}>
@@ -30,10 +48,19 @@ export const Accesorios = () => {
             <div className='card-body box-down'>
               <div className='h-bg'>
                 <div className='h-bg-inner'></div>
-                <span className='price'>{product.price}€</span>
-                <span className='add-to-cart'>
-                  <span className='txt'>Agregar al carrito</span>
-                </span>
+                <a
+                  className='cart'
+                  href='*'
+                  onClick={(e) => {
+                    e.preventDefault();
+                    buyProducts(product);
+                  }}
+                >
+                  <span className='price'>{product.price}€</span>
+                  <span className='add-to-cart'>
+                    <span className='txt'>Agregar al carrito</span>
+                  </span>
+                </a>
               </div>
             </div>
           </div>
