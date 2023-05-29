@@ -9,7 +9,7 @@ export const ProductProvider = ({ children }) => {
 	//Agrego la propiedad quantity para usarla en el contador
 	const productsWithQuantity = AllProducts.map((per) => ({
 		...per,
-		quantity: 1, 
+		quanty: 1, 
 	  }));
 
 	// Llamar todos los Productos
@@ -26,8 +26,18 @@ export const ProductProvider = ({ children }) => {
 		getGlobalProducts();
 	}, []);
 
+	const buyProducts = (per) => {
+		const productrepeat = cart.find((item) => item.id === per.id);
+	
+		if(productrepeat){
+		  setCart(cart.map((item)=> (item.id === per.id ? {...per, quanty:productrepeat.quanty + 1 } : item)));
+		} else {
+		  setCart([...cart, per]);
+		}
+	  };
+
 	return (
-		<ProductContext.Provider value={{AllProducts: productsWithQuantity, cart, setCart}}		>
+		<ProductContext.Provider value={{AllProducts: productsWithQuantity, cart, setCart, buyProducts}}		>
 			{children}
 		</ProductContext.Provider>
 	);

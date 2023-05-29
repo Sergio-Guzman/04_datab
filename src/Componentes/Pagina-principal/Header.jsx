@@ -77,9 +77,21 @@ function Menu() {
             <div className="hamburguesa">
               <div className='hamburguesa-content'>
                 <ul>
-                  <li>Producto 1</li>
-                  <li>Producto 2</li>
-                  <li>Producto 3</li>
+                  <li>
+                    <Link to="Mujer/:womens_clothing" className="enlace-hamburguesa">
+                      Mujer
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="Hombre/:men_clothing" className="enlace-hamburguesa">
+                      Hombre
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="Accesorios/:category(jewelery|electronics)" className="enlace-hamburguesa">
+                      Accesorios
+                    </Link>
+                  </li>
                 </ul>
                 <button className='registration' onClick={toggleMenuClose}>❌</button>
               </div>
@@ -107,19 +119,19 @@ function Menu() {
                 <div className="registro-content">
                   <div className='registration'>
                     <h2 className='registration'>Registration</h2>
-                    <button className='registration' onClick={handleCloseModal}>❌</button>
+                    <button className='registration-x' onClick={handleCloseModal}>❌</button>
                   </div>
                   <form onSubmit={handleSubmit} className="registros">
                     <label>
-                      Username:
+                      Username:  
                       <input type="text" value={username} onChange={handleUsernameChange} />
                     </label>
                     <label>
-                      Password:
+                      Password:  
                       <input type="password" value={password} onChange={handlePasswordChange} />
                     </label>
                   </form>
-                  <button type="submit">Register</button>
+                  <button className="register" type="submit">Register</button>
                 </div>
               </div>
             )}

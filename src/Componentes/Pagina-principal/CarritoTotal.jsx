@@ -4,7 +4,7 @@ import { useContext } from 'react';
 const CarritoTotal = () => {
     const { cart } = useContext(ProductContext);
 
-    const total = cart.reduce((acc,el)=> acc + el.price, 0);
+    const total = cart.reduce((acc,el)=> acc + el.price * el.quanty, 0);
     const totalTruncado = Number.parseFloat(total).toFixed(2);
   return (
     <div className='carritoTotal'>

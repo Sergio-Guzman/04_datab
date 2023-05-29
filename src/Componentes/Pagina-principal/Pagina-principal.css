@@ -6,7 +6,6 @@
 
 /*MENU*/
 .menu {
-
   min-height: 100px;
   border-bottom: 2px black solid;
   background-color: white;
@@ -22,8 +21,8 @@
 
 /* HAMBURUGESA */
 .burger-icon img {
-  width: 30px;
-  height: 30px;
+  width: 22px;
+  height: 22px;
   display: block;
 }
 
@@ -57,7 +56,7 @@
 }
 /* LOGO */
 .logo img {
-  margin-left: 78px;
+  margin-left: 70px;
   margin-bottom: 4px;
   width: 30%;
 }
@@ -109,62 +108,81 @@
 }
 
 /*Banner*/
-.images {
-  width: 100vw;
+
+.banner {
   display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: flex-start;
+  overflow: hidden;
+  background-image: url(./Img-banner/fondo.jpg);
+  background-size: cover;
 }
 
-.image-woman {
-  width: 100vw;
-  height: 100vh;
-  align-items: center;
-  display: flex;
-  background-color: blueviolet;
-  position: relative;
+.flip-card {
+ background-color: transparent;
+ width: 33.33%;
+ height: 500px;
+ perspective: 1000px;
+ border-style: none;
 }
 
-.image-man {
-  width: 100vw;
-  height: 100vh;
-  align-items: center;
-  display: flex;
-  background-color: pink;
-  position: relative;
+.flip-card-inner {
+ position: relative;
+ width: 100%;
+ height: 100%;
+ text-align: center;
+ transition: transform 0.8s;
+ transform-style: preserve-3d;
 }
 
-.image-man img {
-  object-fit: cover;
+.flip-card:hover .flip-card-inner {
+ transform: rotateY(180deg);
+}
+
+.banner-card-front, .banner-card-back {
+ position: absolute;
+ width: 100%;
+ height: 100%;
+ -webkit-backface-visibility: hidden;
+ backface-visibility: hidden;
+}
+
+.banner-card-front {
+ background-color: #bbb;
+ color: black;
+}
+
+.img1, .img2, .img3 {
+  background-size: cover;
+  -moz-background-size: cover;
+  -webkit-background-size: cover;
+  -o-background-size: cover;
   width: 100%;
-  height: 100%;
+  height: 600px;
 }
 
-.image-woman img {
-  object-fit: cover;
-  width: 100%;
-  height: 100%;
+.img1{
+  background-image: url(./Img-banner/hombre.jpg);
 }
 
-.collection-title {
+.img2{
+  background-image: url(./Img-banner/mujer.jpg);
+}
+
+.img3{
+  background-image: url(./Img-banner/accesorios.jpg);
+}
+
+.banner-card-back {
+ background-color:  #FF5733;
+ color: white;
+ transform: rotateY(180deg);
+}
+
+.banner-card-back h1 {
+  transform: translate(0, 5%);
+  font-family: 'Open Sans', sans-serif;
+  top: 50%;
   position: absolute;
-  z-index: 1;
-  color: white;
-  font-size: 2.5rem;
-  font-weight: 500;
-  margin-left: 28%;
-  margin-top: -15%;
-}
-
-.collection-title-man {
-  position: absolute;
-  z-index: 1;
-}
-
-.collection-title:hover {
-  font-weight: 800;
-  cursor: pointer;
+  left: 30%;
 }
 
 /* REGISTRO */
@@ -180,12 +198,19 @@
   bottom: 0;
   display: flex;
   align-items: center;
+  flex-direction: column;
   justify-content: center;
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 999;
 }
 
 .registro-content {
+ 
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  gap: 30px;
   background-color: #fff;
   padding: 40px;
   border-radius: 5px;
@@ -196,18 +221,39 @@
 
 .registration {
   display: flex;
-  justify-content: space-between;
   padding: 10px;
   appearance: none;
   outline: none;
   border: none;
   background: none;
   cursor: pointer;
+
+}
+
+.registration-x {
+  position: absolute;
+  margin-left: 240px;
+  border: none;
+  cursor: pointer;
+  background: none;
 }
 
 .registros {
-  display: flex
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 26px;
+  margin-bottom: 30px;
 }
+
+.register {
+  border: none;
+  background: none;
+  font-weight: bold;
+  cursor: pointer;
+}
+
 .registro-icon{  
   appearance: none;
   outline: none;

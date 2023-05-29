@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import '../Pages/Descripcion.css';
 import { useParams, Link } from 'react-router-dom';
 import { ProductContext } from '../Context/ProductContext';
+import Footer from '../Componentes/Pagina-principal/Footer';
 
 export const Descripcion = () => {
   const [product, setProduct] = useState(null);
@@ -21,6 +22,7 @@ export const Descripcion = () => {
   };
 
   return (
+    <>
     <div>
       {product && (
         <div className="container">
@@ -35,8 +37,11 @@ export const Descripcion = () => {
             <Link className='volver' to="/AllProducts">Volver</Link>
           </div>
         </div>
+        
       )}
     </div>
+    <Footer />
+    </>
   );
 };
 

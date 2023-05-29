@@ -1,3 +1,8 @@
+.volver {
+  font-weight: bold;
+  margin-top: 20px;
+}
+
 .cart-items-total {
   position: absolute;
   display: flex;
@@ -12,27 +17,6 @@
   justify-content: center;
 }
 
-.car-overlay.open {
-    background: white;
-    width: 300px;
-    height: 360px;
-    display: flex;
-    justify-content: baseline;
-    align-items: center;
-    flex-direction: column;
-    margin-left: auto;
-    position: fixed; 
-    top: 98px; 
-    right: 0; 
-    z-index: 3;
-    border: 3px solid black;
-  }
-  
-  .car-close {
-    margin-top: 20px;
-    margin-left: 220px;
-  }
-  
   .car-empty {
     display: flex;
     justify-content: center;
@@ -92,15 +76,29 @@
     width: 40px;
     height: 60px;
   }
+
+  .counter-button {
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 14px;
+  }
+
+  .quanty {
+    font-weight: bold;
+    font-size: 14px;
+  }
   
   .car-close-product {
     border: none;
+    background: none;
     cursor: pointer;
   }
+
   .carritoTotal {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    margin-bottom: 80px;
   }
   

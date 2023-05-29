@@ -1,6 +1,6 @@
 import React from 'react'
-import Woman from './Img-banner/grocery1.jpg'
-
+import './Pagina-principal.css'
+import { Link } from 'react-router-dom'
 
 export const Banner = () => {
   return (
@@ -12,15 +12,47 @@ export const Banner = () => {
 
 function Images() {
   return (
-    <div className="images">
-      <div className="image-woman">
-        <img src={Woman} alt="womanpic" />
-        <h2 className="collection-title">MERCADO</h2>
-      </div>
-      <div className="image-man">
-        <img src={require('./Img-banner/grosery2.jpg')} alt="manpic" />
-        <h2 className="collection-title">PRODUCTOS</h2>
-      </div>
+    <div className="banner">
+      <div className="flip-card">
+      <Link to="Hombre/:men_cloting" class="enlace-hamburguesa">          
+           <div className="flip-card-inner">
+             <div className="banner-card-front">
+               <div className="img1">
+               </div>
+             </div>
+             <div className="banner-card-back">
+               <h1>HOMBRES</h1>
+             </div>
+           </div>
+           </Link>
+        </div> 
+        <div className="flip-card">
+          <Link to="Mujer/:womens_clothing"> 
+           <div className="flip-card-inner">
+             <div className="banner-card-front">
+               <div className="img2">
+               </div>
+             </div>
+             <div className="banner-card-back">
+               <h1>MUJERES</h1>
+             </div>
+           </div>
+          </Link>
+        </div>
+        <div className="flip-card">
+        <Link to="Accesorios/:category(jewelery|electronics)" class="enlace-hamburguesa">
+                  
+           <div className="flip-card-inner">
+             <div className="banner-card-front">
+               <div className="img3">
+               </div>
+             </div>
+             <div className="banner-card-back">
+               <h1>ACCESORIOS</h1>
+             </div>
+           </div>
+           </Link>
+        </div>
     </div>
   );
 }

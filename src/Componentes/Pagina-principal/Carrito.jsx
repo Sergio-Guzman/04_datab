@@ -4,6 +4,7 @@ import CarritoElementos from "./CarritoElementos";
 import CarritoTotal from "./CarritoTotal";
 import empty from './img-header/empty.jpg';
 import { Link } from 'react-router-dom';
+import Footer from "./Footer"
 
 const Carrito = () => {
   const { cart } = useContext(ProductContext);
@@ -14,14 +15,17 @@ const Carrito = () => {
      <Link className='volver' to="/AllProducts">Volver</Link>
      <CarritoElementos />
      <CarritoTotal />
+     <Footer />
   </>
   ):(
     <>
-    <Link className='volver' to="/AllProducts">Volver</Link>
+    
     <div className='car-empty'>
       <img src={empty} alt="img-empty" />
       <p className='empty'>No hay productos en el carrito</p>
+      <Link className='volver' to="/AllProducts">Volver</Link>
     </div>
+    <Footer />
   </>
   )
 };

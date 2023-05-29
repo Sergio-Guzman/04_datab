@@ -5,12 +5,8 @@ import { ProductContext } from '../Context/ProductContext';
 import { useContext } from 'react';
 
 export const AllProducts = () => {
-  const { AllProducts, cart, setCart } = useContext(ProductContext);
+  const { AllProducts , buyProducts } = useContext(ProductContext);
 
-  const buyProducts = (per) => {
-    console.log(per);
-    setCart([...cart, per]);
-  };
 
   return (
     <div>
@@ -30,7 +26,7 @@ export const AllProducts = () => {
             <div className='card-body box-down'>
               <div className='h-bg'>
                 <div className='h-bg-inner'></div>
-                <a className='cart' href='#' onClick={(e) => { e.preventDefault(); buyProducts(per); }}>
+                <a className='cart' href='#' onClick={() => buyProducts(per)}>
                   <span className='price'>{per.price}€</span>
                   <span className='add-to-cart'>
                     <span className='txt'>Agregar al carrito</span>
