@@ -1,11 +1,8 @@
 import React from 'react';
 import { Navigate, Routes, Route } from 'react-router-dom';
-import { SearchPage, HomePage, Descripcion, AllProducts } from './Pages';
 import { Header } from './Componentes/Pagina-principal/Header';
-import Carrito from './Componentes/Pagina-principal/Carrito'
-import { Hombre } from './Pages/Hombre';  
-import { Mujer } from './Pages/Mujer';   
-import { Accesorios } from './Pages/Accesorios'; 
+import Carrito from './Componentes/Pagina-principal/Carrito';
+import { SearchPage, HomePage, Descripcion, AllProducts, Hombre, Mujer, Accesorios } from './Pages';
 
 export const AppRouter = () => {
   return (

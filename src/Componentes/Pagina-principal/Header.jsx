@@ -17,18 +17,17 @@ export const Header = () => {
 
 function Menu() {
   //BUSCADOR
-  const {onImputChange,valueSearch,onResetForm} = useContext(ProductContext);
-  const navigate = useNavigate()
+  const { onImputChange, valueSearch, onResetForm } = useContext(ProductContext);
 
+  const navigate = useNavigate()
   const onSearchSubmit = (e) => {
     e.preventDefault();
-  
     if (valueSearch.trim() !== "") {
       navigate('/Busqueda', {
         state: valueSearch,
       });
     }
-  
+
     onResetForm();
   };
 
@@ -112,7 +111,7 @@ function Menu() {
                   </li>
                   <li>
                     <Link to="AllProducts" className="enlace-hamburguesa">
-                     Todos los productos
+                      Todos los productos
                     </Link>
                   </li>
                 </ul>
@@ -132,7 +131,7 @@ function Menu() {
             <div className="search-bar">
               <img src={require('./img-header/search.png')} alt='buscador' />
               <input
-                type='search'
+                type='text'
                 name='valueSearch'
                 className='searchInput'
                 value={valueSearch}
@@ -152,11 +151,11 @@ function Menu() {
                   </div>
                   <form onSubmit={handleSubmit} className="registros">
                     <label>
-                      Username:  
+                      Username:
                       <input type="text" value={username} onChange={handleUsernameChange} />
                     </label>
                     <label>
-                      Password:  
+                      Password:
                       <input type="password" value={password} onChange={handlePasswordChange} />
                     </label>
                   </form>
@@ -168,9 +167,9 @@ function Menu() {
           {/* CARRITO */}
           <div className="car">
             <Link className="carrito" to={"/Carrito"}><img src={require('./img-header/carrito.png')} alt='carrito' />
-            {cart.length > 0 ?<CarritoContador /> : null}
+              {cart.length > 0 ? <CarritoContador /> : null}
             </Link>
-           
+
           </div>
           {/* CARRITO */}
         </div>
