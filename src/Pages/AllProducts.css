@@ -1,7 +1,7 @@
 .content {
   justify-content: center;
   gap: 40px;
-  padding-top: 60px;
+  padding-top: 40px;
   grid-area: container;
   display: grid;
   grid-template-areas: 
@@ -29,6 +29,13 @@
     .el-wrapper {
       width: 345px;
     }
+
+    .content {
+      grid-template-areas: 
+      "card card" 
+      ;
+      }
+
   }
   
   @media (max-width: 767px) {
@@ -36,6 +43,12 @@
       width: 290px;
       margin: 30px auto;
     }
+
+    .content {
+      grid-template-areas: 
+      "card" 
+      ;
+      }
   }
   
   .el-wrapper:hover .h-bg {
@@ -228,5 +241,24 @@
     white-space: nowrap;
   }
 
+  .responsive-btn {
+    width: 100%;
+    display: inline-flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+  
+  .cart-btn {
+    background-image: url(addcart.svg);
+    background-repeat:no-repeat;
+    background-size:20px 20px;
+    border:1px solid #252525;
+    height: 35px;
+    display: block;
+    width: 70px;
+    background-position: center;
+    box-shadow: 0 0 2px black;
+  }
   
   

@@ -2,6 +2,7 @@ import React, { useContext, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import Footer from '../Componentes/Pagina-principal/Footer';
 import { ProductContext } from '../Context/ProductContext';
+import '../Pages/Products.css';
 
 export const Mujer = () => {
   const { AllProducts, cart, setCart } = useContext(ProductContext);
@@ -28,7 +29,7 @@ export const Mujer = () => {
 
   return (
     <div>
-      MUJER
+      <h2 className='page'>MUJER</h2>
       <div className='content'>
         {filteredProducts.map((product) => (
           <div className='card el-wrapper' key={product.id}>

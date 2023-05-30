@@ -8,18 +8,14 @@ export const Descripcion = () => {
   const [product, setProduct] = useState(null);
   const { id } = useParams();
 
-  const { AllProducts, cart, setCart } = useContext(ProductContext); 
+  const { AllProducts, buyProducts } = useContext(ProductContext); 
 
   useEffect(() => {
     const selectedProduct = AllProducts.find((item) => item.id === parseInt(id));
     setProduct(selectedProduct);
   }, [AllProducts, id]);
 
-  const addToCart = () => {
-    if (product) {
-      setCart([...cart, product]); 
-    }
-  };
+
 
   return (
     <>
@@ -33,11 +29,10 @@ export const Descripcion = () => {
             <h2>{product.title}</h2>
             <h3>€{product.price}</h3>
             <p>{product.description}</p>
-            <button onClick={addToCart}>AGREGAR AL CARRITO</button>
+            <button onClick={() => buyProducts(product)}>AGREGAR AL CARRITO</button>
             <Link className='volver' to="/AllProducts">Volver</Link>
           </div>
         </div>
-        
       )}
     </div>
     <Footer />
@@ -46,6 +41,7 @@ export const Descripcion = () => {
 };
 
 export default Descripcion;
+
 
 
 

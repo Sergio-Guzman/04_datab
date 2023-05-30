@@ -76,6 +76,7 @@ function Menu() {
           {menuVisible && (
             <div className="hamburguesa">
               <div className='hamburguesa-content'>
+                <button className='close-burger' onClick={toggleMenuClose}>❌</button>
                 <ul>
                   <li>
                     <Link to="Mujer" className="enlace-hamburguesa">
@@ -98,7 +99,6 @@ function Menu() {
                     </Link>
                   </li>
                 </ul>
-                <button className='registration' onClick={toggleMenuClose}>❌</button>
               </div>
             </div>
           )}

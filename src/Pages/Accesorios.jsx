@@ -23,7 +23,7 @@ export const Accesorios = () => {
   const onSearchSubmit = (e) => {
     e.preventDefault();
     if (searchTerm.category.trim() !== '') {
-      navigate('/Mujer', {
+      navigate('/Accesorios', {
         state: searchTerm.category,
       });
     }
@@ -31,7 +31,7 @@ export const Accesorios = () => {
 
   return (
     <div>
-      MUJER
+      <h2 className='page'>ACCESORIOS</h2>
       <div className='content'>
         {filteredProducts.map((product) => (
           <div className='card el-wrapper' key={product.id}>

@@ -19,6 +19,16 @@
   justify-content: space-between;
 }
 
+@media (max-width: 768px) {
+  .header {
+    justify-content: space-around;
+  }
+
+  .search-bar {
+   display: none;
+  }
+ }
+
 /* HAMBURUGESA */
 .burger-icon img {
   width: 22px;
@@ -34,7 +44,8 @@
   border: none;
   cursor: pointer;
 }
-.hamburguesa{
+
+.hamburguesa {
   position: fixed;
   top: 0;
   left: 0;
@@ -46,7 +57,8 @@
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 999;
 }
-.hamburguesa-content{
+
+.hamburguesa-content {
   background-color: #fff;
   padding: 40px;
   border-radius: 5px;
@@ -54,6 +66,38 @@
   width: 80%;
   max-width: 500px;
 }
+
+ul {
+  list-style: none;
+}
+
+li {
+  margin-bottom: 10px;
+  list-style: none;
+}
+
+li:hover {
+  font-weight: bold;
+}
+
+.close-burger {
+  position: absolute;
+  margin-left: 380px;
+  border: none;
+  cursor: pointer;
+  background: none;
+}
+
+@media (max-width: 768px) {
+  .close-burger {
+    margin-left: 300px;
+  }
+
+  .burger-icon {
+    margin-right: 40px;
+  }
+ }
+
 /* LOGO */
 .logo img {
   margin-left: 70px;
@@ -107,8 +151,7 @@
   cursor: pointer;
 }
 
-/*Banner*/
-
+/*BANNER*/
 .banner {
   display: flex;
   overflow: hidden;
@@ -183,6 +226,29 @@
   top: 50%;
   position: absolute;
   left: 30%;
+}
+
+@media only screen and (max-width: 992px) {
+  .flip-card{
+  height: 250px;
+  }
+  .banner {
+  flex-direction: column;
+}
+.flip-card {
+  width: 100%;
+}
+.img1, .img2, .img3 {
+  height: 250px;
+  background-position-y: 25%;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  color: rgba(255, 255, 255, 0.7);
+}
+.catg-resp {
+  text-shadow: -1px -1px 1px #000;
+}
 }
 
 /* REGISTRO */
@@ -261,8 +327,14 @@
   background: none;
   cursor: pointer;
 }
-/*FOOTER*/
 
+@media (max-width: 768px) {
+  .registration-x {
+    margin-left: 200px;
+  }
+ }
+
+/*FOOTER*/
 @import url('https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap');
 
 * {

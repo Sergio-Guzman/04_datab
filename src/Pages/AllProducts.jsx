@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import Footer from '../Componentes/Pagina-principal/Footer';
 import { ProductContext } from '../Context/ProductContext';
 import { useContext } from 'react';
+import MediaQuery from 'react-responsive';
 
 export const AllProducts = () => {
   const { AllProducts , buyProducts } = useContext(ProductContext);
@@ -24,15 +25,23 @@ export const AllProducts = () => {
               </div>
             </div>
             <div className='card-body box-down'>
+            <MediaQuery maxWidth={1024}>
+            <div className='responsive-btn'>
+                <span>{per.price} €</span>
+                <Link className='cart-btn'></Link>
+            </div>
+            </MediaQuery>
+            <MediaQuery minWidth={1025}>
               <div className='h-bg'>
                 <div className='h-bg-inner'></div>
-                <a className='cart' href='#' onClick={() => buyProducts(per)}>
+                <Link className='cart' onClick={() => buyProducts(per)}>
                   <span className='price'>{per.price}€</span>
                   <span className='add-to-cart'>
                     <span className='txt'>Agregar al carrito</span>
                   </span>
-                </a>
+                </Link>
               </div>
+              </MediaQuery>
             </div>
           </div>
         ))}

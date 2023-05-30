@@ -28,7 +28,7 @@ export const Hombre = () => {
 
   return (
     <div>
-      HOMBRE
+      <h2 className='page'>HOMBRE</h2>
       <div className='content'>
         {filteredProducts.map((product) => (
           <div className='card el-wrapper' key={product.id}>
