@@ -1,10 +1,16 @@
 import { useEffect, useState, } from 'react';
 import { ProductContext } from './ProductContext';
 import axios from 'axios';
+import { useForm } from '../hooks/hoobuscador';
 
 export const ProductProvider = ({ children }) => {
 	const [AllProducts, setAllProducts] = useState([]);
 	const [cart, setCart] = useState([]);
+//
+const {valueSearch,onImputChange,onResetForm} = useForm({
+      valueSearch: ''
+   })
+//
 
 	//Agrego la propiedad quantity para usarla en el contador
 	const productsWithQuantity = AllProducts.map((per) => ({
@@ -36,8 +42,15 @@ export const ProductProvider = ({ children }) => {
 		}
 	  };
 
-	return (
-		<ProductContext.Provider value={{AllProducts: productsWithQuantity, cart, setCart, buyProducts}}		>
+	  return (
+		<ProductContext.Provider 
+		value={{AllProducts: productsWithQuantity,
+		 cart, 
+		 setCart, 
+		 buyProducts,
+		 valueSearch,
+		 onImputChange,
+		 onResetForm}}>
 			{children}
 		</ProductContext.Provider>
 	);

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Outlet, Link } from 'react-router-dom'
+import { Outlet, Link, useNavigate } from 'react-router-dom'
 import { useState } from 'react';
 import { ProductContext } from '../../Context/ProductContext';
 import { useContext } from 'react';
@@ -16,6 +16,23 @@ export const Header = () => {
 }
 
 function Menu() {
+  //BUSCADOR
+  const {onImputChange,valueSearch,onResetForm} = useContext(ProductContext);
+  const navigate = useNavigate()
+
+  const onSearchSubmit = (e) => {
+    e.preventDefault();
+  
+    if (valueSearch.trim() !== "") {
+      navigate('/Busqueda', {
+        state: valueSearch,
+      });
+    }
+  
+    onResetForm();
+  };
+
+  // CARRITO
   const { cart } = useContext(ProductContext);
 
   const [search, setSearch] = useState('');
@@ -63,7 +80,7 @@ function Menu() {
     console.log('Password:', password);
     // Luego puedes cerrar el modal
     handleCloseModal();
-    // REGISTRO
+
   };
   return (
     <div className="menu">
@@ -111,11 +128,18 @@ function Menu() {
         </div>
         {/* BUSCADOR */}
         <div className="right-align-elements">
-          <div className="search-bar">
-            <img src={require('./img-header/search.png')} alt='buscador' />
-            <input type='text' placeholder='Search...' className='searchInput' value={search} onChange={handleSearch} />
-
-          </div>
+          <form onSubmit={onSearchSubmit}>
+            <div className="search-bar">
+              <img src={require('./img-header/search.png')} alt='buscador' />
+              <input
+                type='search'
+                name='valueSearch'
+                className='searchInput'
+                value={valueSearch}
+                onChange={onImputChange}
+                placeholder='Search...' />
+            </div>
+          </form>
           {/* REGISTRO */}
           <div>
             <button className="registro-icon" onClick={handleOpenModal}><img src={require('./img-header/registro.png')} alt='registro' /></button>
