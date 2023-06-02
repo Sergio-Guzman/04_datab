@@ -6,7 +6,7 @@ import '../Pages/Products.css';
 
 export const Mujer = () => {
   const { AllProducts, cart, setCart } = useContext(ProductContext);
-  const [searchTerm, setSearchTerm] = useState("women's clothing"); // Establecer el valor inicial como "Womens"
+  const [searchTerm, setSearchTerm] = useState('');
   const navigate = useNavigate();
 
   const buyProducts = (product) => {
@@ -15,8 +15,15 @@ export const Mujer = () => {
   };
 
   const filteredProducts = AllProducts.filter((product) => {
-    return product.category.toLowerCase().includes(searchTerm.toLowerCase());
+    return (
+      product.category.toLowerCase() === "women's clothing" &&
+      product.title.toLowerCase().includes(searchTerm.toLowerCase())
+    );
   });
+
+  const handleSearch = (e) => {
+    setSearchTerm(e.target.value);
+  };
 
   const onSearchSubmit = (e) => {
     e.preventDefault();
@@ -30,6 +37,17 @@ export const Mujer = () => {
   return (
     <div>
       <h2 className='page'>MUJER</h2>
+      <form onSubmit={onSearchSubmit}>
+        <div className='search-category'>
+          <input
+            type='text'
+            placeholder='Buscar productos'
+            value={searchTerm}
+            onChange={handleSearch}
+          />
+          <button className='button' type='submit'>Buscar</button>
+        </div>
+      </form>
       <div className='content'>
         {filteredProducts.map((product) => (
           <div className='card el-wrapper' key={product.id}>

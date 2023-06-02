@@ -5,7 +5,7 @@ import { ProductContext } from '../Context/ProductContext';
 
 export const Hombre = () => {
   const { AllProducts, cart, setCart } = useContext(ProductContext);
-  const [searchTerm, setSearchTerm] = useState("men's clothing"); // Establecer el valor inicial como "Men"
+  const [searchTerm, setSearchTerm] = useState('');
   const navigate = useNavigate();
 
   const buyProducts = (product) => {
@@ -14,8 +14,15 @@ export const Hombre = () => {
   };
 
   const filteredProducts = AllProducts.filter((product) => {
-    return product.category.toLowerCase()===(searchTerm.toLowerCase());
+    return (
+      product.category.toLowerCase() === "men's clothing" &&
+      product.title.toLowerCase().includes(searchTerm.toLowerCase())
+    );
   });
+
+  const handleSearch = (e) => {
+    setSearchTerm(e.target.value);
+  };
 
   const onSearchSubmit = (e) => {
     e.preventDefault();
@@ -29,6 +36,17 @@ export const Hombre = () => {
   return (
     <div>
       <h2 className='page'>HOMBRE</h2>
+      <form onSubmit={onSearchSubmit}>
+        <div className='search-category'>
+          <input
+            type='text'
+            placeholder='Buscar productos'
+            value={searchTerm}
+            onChange={handleSearch}
+          />
+          <button className='button' type='submit'>Buscar</button>
+        </div>
+      </form>
       <div className='content'>
         {filteredProducts.map((product) => (
           <div className='card el-wrapper' key={product.id}>

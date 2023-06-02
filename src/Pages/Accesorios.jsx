@@ -5,7 +5,7 @@ import { ProductContext } from '../Context/ProductContext';
 
 export const Accesorios = () => {
   const { AllProducts, cart, setCart } = useContext(ProductContext);
-  const [searchTerm, setSearchTerm] = useState({ category: 'jewelery', secondCategory: 'electronics' });
+  const [searchTerm, setSearchTerm] = useState('');
   const navigate = useNavigate();
 
   const buyProducts = (product) => {
@@ -15,16 +15,18 @@ export const Accesorios = () => {
 
   const filteredProducts = AllProducts.filter((product) => {
     return (
-      product.category.toLowerCase().includes(searchTerm.category.toLowerCase()) ||
-      product.category.toLowerCase().includes(searchTerm.secondCategory.toLowerCase())
+      product.category.toLowerCase().includes('jewelery') ||
+      product.category.toLowerCase().includes('electronics')
+    ) && (
+      product.title.toLowerCase().includes(searchTerm.toLowerCase())
     );
   });
 
   const onSearchSubmit = (e) => {
     e.preventDefault();
-    if (searchTerm.category.trim() !== '') {
+    if (searchTerm.trim() !== '') {
       navigate('/Accesorios', {
-        state: searchTerm.category,
+        state: searchTerm,
       });
     }
   };
@@ -32,6 +34,17 @@ export const Accesorios = () => {
   return (
     <div>
       <h2 className='page'>ACCESORIOS</h2>
+      <form onSubmit={onSearchSubmit}>
+        <div className='search-category'>
+          <input
+            type='text'
+            placeholder='Buscar productos'
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+          />
+          <button className='button' type='submit'>Buscar</button>
+        </div>
+      </form>
       <div className='content'>
         {filteredProducts.map((product) => (
           <div className='card el-wrapper' key={product.id}>
